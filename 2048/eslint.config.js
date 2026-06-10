@@ -11,7 +11,12 @@ module.exports = [
       "eqeqeq": "warn",
       "curly": "warn",
       "no-var": "warn",
-      "no-console": "warn"
+      "no-console": "warn",
+
+      "semi": "warn",
+      "quotes": ["warn", "single"],
+      "camelcase": "warn",
+      "no-multi-spaces": "warn"
     }
   }
 ];
