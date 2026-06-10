@@ -19,6 +19,7 @@ module.exports = [
       "brace-style": "warn",
       "camelcase": "warn",
       "indent": ["warn", 2],
+      "no-undef": "error",
       "space-infix-ops": "warn",
       "no-multi-spaces": "warn"
     }
