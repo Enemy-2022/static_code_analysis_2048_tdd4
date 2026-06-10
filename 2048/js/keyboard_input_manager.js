@@ -3,13 +3,13 @@ function KeyboardInputManager() {
 
   if (window.navigator.msPointerEnabled) {
     //Internet Explorer 10 style
-    this.eventTouchstart    = "MSPointerDown";
-    this.eventTouchmove     = "MSPointerMove";
-    this.eventTouchend      = "MSPointerUp";
+    this.eventTouchstart = 'MSPointerDown';
+    this.eventTouchmove = 'MSPointerMove';
+    this.eventTouchend = 'MSPointerUp';
   } else {
-    this.eventTouchstart    = "touchstart";
-    this.eventTouchmove     = "touchmove";
-    this.eventTouchend      = "touchend";
+    this.eventTouchstart = 'touchstart';
+    this.eventTouchmove = 'touchmove';
+    this.eventTouchend = 'touchend';
   }
 
   this.listen();
@@ -23,7 +23,7 @@ KeyboardInputManager.prototype.on = function (event, callback) {
 };
 
 KeyboardInputManager.prototype.emit = function (event, data) {
-  var callbacks = this.events[event];
+  const callbacks = this.events[event];
   if (callbacks) {
     callbacks.forEach(function (callback) {
       callback(data);
@@ -32,9 +32,9 @@ KeyboardInputManager.prototype.emit = function (event, data) {
 };
 
 KeyboardInputManager.prototype.listen = function () {
-  var self = this;
+  const self = this;
 
-  var map = {
+  const map = {
     38: 0, // Up
     39: 1, // Right
     40: 2, // Down
@@ -46,19 +46,19 @@ KeyboardInputManager.prototype.listen = function () {
     87: 0, // W
     68: 1, // D
     83: 2, // S
-    65: 3  // A
+    65: 3 // A
   };
 
   // Respond to direction keys
   document.addEventListener("keydown", function (event) {
-    var modifiers = event.altKey || event.ctrlKey || event.metaKey ||
+    const modifiers = event.altKey || event.ctrlKey || event.metaKey ||
                     event.shiftKey;
-    var mapped    = map[event.which];
+    const mapped = map[event.which];
 
     if (!modifiers) {
       if (mapped !== undefined) {
         event.preventDefault();
-        self.emit("move", mapped);
+        self.emit('move', mapped);
       }
     }
 
@@ -69,12 +69,12 @@ KeyboardInputManager.prototype.listen = function () {
   });
 
   // Respond to button presses
-  this.bindButtonPress(".retry-button", this.restart);
-  this.bindButtonPress(".restart-button", this.restart);
-  this.bindButtonPress(".keep-playing-button", this.keepPlaying);
+  this.bindButtonPress('.retry-button', this.restart);
+  this.bindButtonPress('.restart-button', this.restart);
+  this.bindButtonPress('.keep-playing-button', this.keepPlaying);
 
   // Respond to swipe events
-  var touchStartClientX, touchStartClientY;
+  let touchStartClientX, touchStartClientY;
   var gameContainer = document.getElementsByClassName("game-container")[0];
 
   gameContainer.addEventListener(this.eventTouchstart, function (event) {
