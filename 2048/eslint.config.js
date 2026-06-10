@@ -20,6 +20,7 @@ module.exports = [
       "camelcase": "warn",
       "indent": ["warn", 2],
       "no-undef": "error",
+      "no-redeclare": "error",
       "space-infix-ops": "warn",
       "no-multi-spaces": "warn"
     }
