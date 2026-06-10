@@ -4,7 +4,7 @@
     return;
   }
 
-  var prototype = Array.prototype,
+  const prototype = Array.prototype,
       push = prototype.push,
       splice = prototype.splice,
       join = prototype.join;
@@ -12,8 +12,8 @@
   function DOMTokenList(el) {
     this.el = el;
     // The className needs to be trimmed and split on whitespace
-    // to retrieve a list of classes.
-    var classes = el.className.replace(/^\s+|\s+$/g, '').split(/\s+/);
+    // to retrieve a list of classes
+    const classes = el.className.replace(/^\s+|\s+$/g, '').split(/\s+/);
     for (var i = 0; i < classes.length; i++) {
       push.call(this, classes[i]);
     }
@@ -21,20 +21,29 @@
 
   DOMTokenList.prototype = {
     add: function (token) {
-      if (this.contains(token)) return;
+      if (this.contains(token)) 
+        {
+          return;
+        }
       push.call(this, token);
       this.el.className = this.toString();
     },
     contains: function (token) {
-      return this.el.className.indexOf(token) != -1;
+      return this.el.className.indexOf(token) !== -1;
     },
     item: function (index) {
       return this[index] || null;
     },
     remove: function (token) {
-      if (!this.contains(token)) return;
-      for (var i = 0; i < this.length; i++) {
-        if (this[i] == token) break;
+      if (!this.contains(token)) 
+      {
+        return;
+      }
+      for (let i = 0; i < this.length; i++) {
+        if (this[i] === token) 
+          {
+            break;
+          }
       }
       splice.call(this, i, 1);
       this.el.className = this.toString();
