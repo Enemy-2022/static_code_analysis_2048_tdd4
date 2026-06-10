@@ -15,6 +15,7 @@ module.exports = [
 
       "semi": "warn",
       "quotes": ["warn", "single"],
+      "no-else-return": "warn",
       "camelcase": "warn",
       "no-multi-spaces": "warn"
     }
