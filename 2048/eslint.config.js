@@ -16,7 +16,10 @@ module.exports = [
       "semi": "warn",
       "quotes": ["warn", "single"],
       "no-else-return": "warn",
+      "brace-style": "warn",
       "camelcase": "warn",
+      "indent": ["warn", 2],
+      "space-infix-ops": "warn",
       "no-multi-spaces": "warn"
     }
   }
