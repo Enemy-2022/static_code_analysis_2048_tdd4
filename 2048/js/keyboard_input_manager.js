@@ -50,7 +50,7 @@ KeyboardInputManager.prototype.listen = function () {
   };
 
   // Respond to direction keys
-  document.addEventListener("keydown", function (event) {
+  document.addEventListener('keydown', function (event) {
     const modifiers = event.altKey || event.ctrlKey || event.metaKey ||
                     event.shiftKey;
     const mapped = map[event.which];
@@ -75,7 +75,7 @@ KeyboardInputManager.prototype.listen = function () {
 
   // Respond to swipe events
   let touchStartClientX, touchStartClientY;
-  var gameContainer = document.getElementsByClassName("game-container")[0];
+  const gameContainer = document.getElementsByClassName('game-container')[0];
 
   gameContainer.addEventListener(this.eventTouchstart, function (event) {
     if ((!window.navigator.msPointerEnabled && event.touches.length > 1) ||
@@ -104,7 +104,7 @@ KeyboardInputManager.prototype.listen = function () {
       return; // Ignore if still touching with one or more fingers
     }
 
-    var touchEndClientX, touchEndClientY;
+    let touchEndClientX, touchEndClientY;
 
     if (window.navigator.msPointerEnabled) {
       touchEndClientX = event.pageX;
@@ -114,31 +114,31 @@ KeyboardInputManager.prototype.listen = function () {
       touchEndClientY = event.changedTouches[0].clientY;
     }
 
-    var dx = touchEndClientX - touchStartClientX;
-    var absDx = Math.abs(dx);
+    const dx = touchEndClientX - touchStartClientX;
+    const absDx = Math.abs(dx);
 
-    var dy = touchEndClientY - touchStartClientY;
-    var absDy = Math.abs(dy);
+    const dy = touchEndClientY - touchStartClientY;
+    const absDy = Math.abs(dy);
 
     if (Math.max(absDx, absDy) > 10) {
       // (right : left) : (down : up)
-      self.emit("move", absDx > absDy ? (dx > 0 ? 1 : 3) : (dy > 0 ? 2 : 0));
+      self.emit('move', absDx > absDy ? (dx > 0 ? 1 : 3) : (dy > 0 ? 2 : 0));
     }
   });
 };
 
 KeyboardInputManager.prototype.restart = function (event) {
   event.preventDefault();
-  this.emit("restart");
+  this.emit('restart');
 };
 
 KeyboardInputManager.prototype.keepPlaying = function (event) {
   event.preventDefault();
-  this.emit("keepPlaying");
+  this.emit('keepPlaying');
 };
 
 KeyboardInputManager.prototype.bindButtonPress = function (selector, fn) {
-  var button = document.querySelector(selector);
-  button.addEventListener("click", fn.bind(this));
+  const button = document.querySelector(selector);
+  button.addEventListener('click', fn.bind(this));
   button.addEventListener(this.eventTouchend, fn.bind(this));
 };
