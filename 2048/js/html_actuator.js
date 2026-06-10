@@ -47,7 +47,7 @@ HTMLActuator.prototype.clearContainer = function (container) {
 };
 
 HTMLActuator.prototype.addTile = function (tile) {
-  var self = this;
+  let self = this;
 
   var wrapper   = document.createElement("div");
   var inner     = document.createElement("div");
